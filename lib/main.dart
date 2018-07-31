@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -22,15 +21,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'notifier',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('notifier'),
-        ),
+        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
         body: Center(
           child: FutureBuilder<String>(
             future: fetchTodayInformation(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data);
+                return Text(
+                  snapshot.data,
+                  style: new TextStyle(
+                    color: Colors.white,
+                    fontSize: 50.0
+                  ));
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
